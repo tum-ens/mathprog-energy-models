@@ -7,11 +7,11 @@
 # glpsol -m intertemporal.mod
 #
 # OVERVIEW
-#
-#
-#
-#
-#
+# This LP model finds the minimum cost investment plan for for a set of two
+# power plant technologies over multiple decades, allowing investment decisions
+# every five years. Old investments phase out of the power plant fleet after 
+# their lifetime is over. A discount factor incentivises later investment, while 
+# demand must be satisfied throughout the years.
 #
 
 

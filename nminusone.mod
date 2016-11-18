@@ -8,7 +8,7 @@
 #
 # OVERVIEW
 # This model finds the minimum cost network within a graph to redundantly
-# connect pre-determined 
+# connect a set of source to a set of demand points.
 #
 # NETWORK GRAPH
 # (for input data, see bottom of file)

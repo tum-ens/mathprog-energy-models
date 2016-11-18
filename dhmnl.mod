@@ -7,11 +7,17 @@
 # glpsol -m dhmnl.mod
 
 # OVERVIEW
-# This model comes with the following (ASCII-art sketch ahead)
-# network graph. The corners (A, D, H, K) house big heating stations, 
-# supported by a smaller station in the center (F). All remaining vertices
-# contain either big (E, G), medium (I) and small (B, C, J) demands, which
-# may (do not have to be) satisfied, if profitable.
+# This mixed-integer linear programming (MILP) model finds the maximum revenue
+# topology and size of a district heating network for a given set of source
+# and demand vertices. The model can decide which demands to connect and 
+# consequently decide over the location and size of the built network.
+#
+# This example comes with the following (ASCII-art sketch ahead)
+# network graph pre-coded into the data section at the end of the file. The 
+# corners (A, D, H, K) house big heating stations, supported by a smaller 
+# station in the center (F). All remaining vertices contain either big (E, G), 
+# medium (I) and small (B, C, J) demands, which may (do not have to be) 
+# satisfied, if profitable.
 #
 # Costs occur for a) constructing pipes and b) generating heat in heating
 # stations. Revenue is generated through satisfying demands. Pipe
