@@ -8,31 +8,31 @@ The common theme among these models is **capacity expansion**, **power flow** an
 
 ### DCFLOW
 
-This linear programming model finds the minimum cost generation and network flow for a lossless network, while obeying linearised DC powerflow equations.
+This linear programming model finds the minimum cost generation and network flow for a lossless network, while obeying **linearised DC powerflow** equations.
 
 ### DHMNL
 
-This mixed-integer linear programming (MILP) model finds the maximum revenue topology and size of a district heating network for a given set of source and demand vertices. The model can decide which demands to connect and  consequently decide over the location and size of the built network.
+This mixed-integer linear programming (MILP) model finds the **maximum revenue topology and size** of a district heating network for a given set of source and demand vertices. The model **can decide which demands to connect** and consequently plans the location and size of the built network.
 
 ### Equilibrium
 
-This LP model finds the maximum welfare solution for a given set of  a) a discretised production cost curve (i.e. a merit order curve) and b) a discretised utility function of customers (i.e. a price-demand curve).
+This LP model finds the **maximum welfare** solution for a given set of  a) a discretised production cost curve (i.e. a **merit order** curve) and b) a discretised utility function of customers (i.e. a **price-demand** curve).
 
 ### Intertemporal
 
-This LP model finds the minimum cost investment plan for for a set of two power plant technologies over multiple decades, allowing investment decisions every five years. Old investments phase out of the power plant fleet after 
+This LP model finds the minimum cost **investment plan **for for a set of two power plant technologies over multiple decades, allowing investment decisions every five years. Old investments phase out of the power plant fleet after the **lifetime** of each investment is over.
 
 ### N minus 1
 
-This model finds the minimum cost network within a graph to redundantly connect a set of source to a set of demand points. "Redundantly" means that the resulting network is resilient against the failure of any single edge in the network, i.e. satisfying the [N-1 Criterion](https://emr.entsoe.eu/glossary/bin/view/ENTSO-E+Common+Glossary/N-1+Criterion) common in electric grid design.
+This model finds the minimum cost network within a graph to **redundantly connect a set of source to a set of demand points**. "Redundantly" means that the resulting network is resilient against the failure of any single edge in the network, i.e. satisfying the [N-1 Criterion](https://emr.entsoe.eu/glossary/bin/view/ENTSO-E+Common+Glossary/N-1+Criterion) common in electric grid design.
 
 ### SOforSG
 
-Storage Optimisation for Smart Grid. This model optimizes size and operation of a hypothetical lossless storage technology for electric energy. A given electricity demand must be satisfied from a) a cost-free (renewable) energy supply with intermittent characteristic or from b) purchase, i.e. buying of electricity from the grid for a time-dependent price. Find more explanation in [a dedicated blog post](http://www.enerpymodelling.de/soforsg/) that walks through the whole model.
+Storage Optimisation for Smart Grid. This model optimises **size and operation** of a hypothetical lossless **storage technology** for electric energy. A given electricity demand must be satisfied from a) a cost-free (renewable) energy supply with intermittent characteristic or from b) purchase, i.e. buying of electricity from the grid for a time-dependent price. Find more explanation in [a dedicated blog post](http://www.enerpymodelling.de/soforsg/) that walks through the whole model.
 
 ### Startup and partial
 
-This linear programming (LP) optimisation model finds a minimum-cost capacity expansion and unit commitment solution to a given demand  timeseries for a combination of a fluctuating feed-in (renewables) and a controllable technology (power plant). This model focuses on correctly depicting the trade-off in sizing the power plant with respect to its operation point, which can exhibit less efficiency than when operating at its nominal size.
+This linear programming (LP) optimisation model finds a **minimum-cost capacity expansion and unit commitment** solution to a given demand  timeseries for a combination of a fluctuating feed-in (renewables) and a controllable technology (power plant). This model focuses on correctly depicting the trade-off in sizing the power plant with respect to its operation point, which can exhibit less efficiency than when operating below its nominal size. These properties are approximated by a formulation that combines **startup costs** with a linearily increasing or decreasing **conversion efficiency**, depending on the **operation point**.
 
 ## Installation
 
