@@ -24,11 +24,11 @@ This LP model finds the minimum cost investment plan for for a set of two power 
 
 ### N minus 1
 
-This model finds the minimum cost network within a graph to redundantly connect a set of source to a set of demand points. "Redundantly" means that the resulting network is resilient against the failure of any single edge in the network, i.e. satisfying the ["N minus 1" criterion](https://emr.entsoe.eu/glossary/bin/view/ENTSO-E+Common+Glossary/N-1+Criterion).
+This model finds the minimum cost network within a graph to redundantly connect a set of source to a set of demand points. "Redundantly" means that the resulting network is resilient against the failure of any single edge in the network, i.e. satisfying the [N-1 Criterion](https://emr.entsoe.eu/glossary/bin/view/ENTSO-E+Common+Glossary/N-1+Criterion) common in electric grid design.
 
 ### SOforSG
 
-Storage Optimisation for Smart Grid. More explanation on [enerpymodelling.de](http://www.enerpymodelling.de/soforsg/).
+Storage Optimisation for Smart Grid. This model optimizes size and operation of a hypothetical lossless storage technology for electric energy. A given electricity demand must be satisfied from a) a cost-free (renewable) energy supply with intermittent characteristic or from b) purchase, i.e. buying of electricity from the grid for a time-dependent price. Find more explanation in [a dedicated blog post](http://www.enerpymodelling.de/soforsg/) that walks through the whole model.
 
 ### Startup and partial
 
@@ -38,14 +38,27 @@ This linear programming (LP) optimisation model finds a minimum-cost capacity ex
 
 The standalone solver `glpsol` from the GNU Linear Programming Toolkit (GLPK).
 
-### Linux
+### WebApp
 
-Most distributions offer GLPK as a ready-made packages. If unsure, please consult your distribution's package index. 
-On Debian, Debian-based (e.g. Ubuntu) distributions, this will work:
+For trying out these models, there is an in-browser [WebApp](http://www3.nd.edu/~jeff/mathprog/) for MathProg maintained by [Jeffrey Kantor](http://energy.nd.edu/faculty/jeffrey-kantor/).
 
-    sudo apt-get install glpk-utils
+### Windows
+
+Binary builds for Windows are available through the [WinGLPK](https://sourceforge.net/projects/winglpk/). Just extract the contents of the ZIP file to a convenient location, e.g. `C:\GLPK`.
+
+### Linux packages
+
+Most distributions offer GLPK as a ready-made packages. If unsure, please consult your distribution's package index. On Debian or Debian-based (e.g. Ubuntu) distributions, executing the following command on the terminal (excluding the `$ `):
+
+    $ sudo apt-get install glpk-utils
     
-Note that package maintainers could potentially lag behind new versions up to several releases. If you want the most recent version, you might consider downloading the source code from the [project homepage](https://www.gnu.org/software/glpk/) and build the solver from source by following the instructions in the accompanying `INSTALL` file. Typically, this boils down to the following steps:
+Note that package maintainers could potentially lag behind new versions up to several releases. To check which version you have installed, you can use:
+
+    $ glpsol --version
+
+### Building from source
+
+If you want the most recent version, you might consider downloading the source code from the [project homepage](https://www.gnu.org/software/glpk/) and build the solver from source by following the instructions in the accompanying `INSTALL` file. Typically, this boils down to the following steps, where `X-Y` must be replaced by the version number, e.g. `4-60`:
 
     $ tar -xzvf glpk-X-Y.tar.gz
     $ cd glpk-X-Y
@@ -58,10 +71,6 @@ To check whether (and where) the solver was installed, you can use:
 
     $ which glpsol
     /usr/bin/glpsol
-
-### Windows
-
-Binary builds for Windows are available through the [WinGLPK](https://sourceforge.net/projects/winglpk/). Just extract the contents of the ZIP file to a convenient location, e.g. `C:\GLPK`.
 
 
 ## Copyright
