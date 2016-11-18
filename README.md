@@ -20,7 +20,7 @@ This LP model finds the **maximum welfare** solution for a given set of  a) a di
 
 ### Intertemporal
 
-This LP model finds the minimum cost **investment plan **for for a set of two power plant technologies over multiple decades, allowing investment decisions every five years. Old investments phase out of the power plant fleet after the **lifetime** of each investment is over.
+This LP model finds the minimum cost **investment plan** for for a set of two power plant technologies over multiple decades, allowing investment decisions every five years. Old investments phase out of the power plant fleet after the **lifetime** of each investment is over.
 
 ### N minus 1
 
