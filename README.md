@@ -1,6 +1,10 @@
-# GNU MathProg models for energy system planning and operation
+# MathProg models for energy system planning and operation
 
-## The Models 
+This repository contains a collection of mathematical optimisation models that have been developed for educational purposes for several lectures. They are collected here for easier maintenance and better visibility of what has been implemented already.
+
+The common theme among these models is **capacity expansion**, **power flow** and **plant scheduling** for **minimum total system cost** (or - in the case of DHMNL - maximum revenue), each model stressing another aspect of common tasks  
+
+## The Models
 
 ### DCFLOW
 
@@ -11,6 +15,9 @@ This linear programming model finds the minimum cost generation and network flow
 This mixed-integer linear programming (MILP) model finds the maximum revenue topology and size of a district heating network for a given set of source and demand vertices. The model can decide which demands to connect and  consequently decide over the location and size of the built network.
 
 ### Equilibrium
+
+This LP model finds the maximum welfare solution for a given set of  a) a discretised production cost curve (i.e. a merit order curve) and b) a discretised utility function of customers (i.e. a price-demand curve).
+
 ### Intertemporal
 
 This LP model finds the minimum cost investment plan for for a set of two power plant technologies over multiple decades, allowing investment decisions every five years. Old investments phase out of the power plant fleet after 
@@ -55,3 +62,9 @@ To check whether (and where) the solver was installed, you can use:
 ### Windows
 
 Binary builds for Windows are available through the [WinGLPK](https://sourceforge.net/projects/winglpk/). Just extract the contents of the ZIP file to a convenient location, e.g. `C:\GLPK`.
+
+
+## Copyright
+
+Each model has its own author and license statement in the file header. Most models so far have the Creative Commons Public Domain Dedication, short [CC0](https://creativecommons.org/publicdomain/zero/1.0). In other words, *you can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.* Some minor conditions still apply, most notably: *When using or citing the work, you should not imply endorsement by the author or the affirmer.* But that's about it. But when in doubt, read the [read the full license text](https://creativecommons.org/publicdomain/zero/1.0/legalcode).
+

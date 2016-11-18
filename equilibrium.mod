@@ -8,7 +8,14 @@
 
 # OVERVIEW
 #
-# 
+# This LP model finds the maximum welfare solution for a given set of 
+# a) a discretised production cost curve (i.e. a merit order curve) and
+# b) a discretised utility function of customers (i.e. a price-demand curve).
+#
+# An additional parameter can penalise certain power production types by 
+# increasing their production costs relative to their emissions. This can change
+# the order of the producers in the merit order and the total demand that is to
+# be satisfied in the case of maximum welfare. 
 
 
 
