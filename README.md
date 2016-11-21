@@ -2,7 +2,7 @@
 
 This repository contains a collection of mathematical optimisation models that have been developed for educational purposes for several lectures. They are collected here for easier maintenance and better visibility of what has been implemented already.
 
-The common theme among these models is **capacity expansion**, **power flow** and **plant scheduling** for **minimum total system cost** (or - in the case of DHMNL - maximum revenue), each model stressing another aspect of common tasks  
+The common theme among these models is **capacity expansion**, **power flow** and **plant scheduling** for **minimum total system cost** (or - in the case of DHMNL - maximum revenue), each model stressing another aspect of common tasks in modelling of energy systems.
 
 ## The Models
 
@@ -44,7 +44,13 @@ For trying out these models, there is an in-browser [WebApp](http://www3.nd.edu/
 
 ### Windows
 
-Binary builds for Windows are available through the [WinGLPK](https://sourceforge.net/projects/winglpk/). Just extract the contents of the ZIP file to a convenient location, e.g. `C:\GLPK`.
+Binary builds for Windows are available through the [WinGLPK](https://sourceforge.net/projects/winglpk/). Just extract the contents of the ZIP file to a convenient location, e.g. `C:\GLPK`. You then can either call a model using
+
+    C:\GLPK\bin\glpsol.exe -m model.mod
+    
+or add the subdirectory `w64`, which contains the file `glpsol.exe`, to the system path ([how](http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx)), so that the command `glpsol` is available on the command prompt from any directory directly:
+
+    glpsol -m model.mod
 
 ### Linux packages
 
@@ -76,4 +82,3 @@ To check whether (and where) the solver was installed, you can use:
 ## Copyright
 
 Each model has its own author and license statement in the file header. Most models so far have the Creative Commons Public Domain Dedication, short [CC0](https://creativecommons.org/publicdomain/zero/1.0). In other words, *you can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.* Some minor conditions still apply, most notably: *When using or citing the work, you should not imply endorsement by the author or the affirmer.* But that's about it. But when in doubt, read the [read the full license text](https://creativecommons.org/publicdomain/zero/1.0/legalcode).
-
