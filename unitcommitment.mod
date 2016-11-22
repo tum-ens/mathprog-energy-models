@@ -21,8 +21,6 @@ param c_stop{plant};  # shutdown cost of plant (EUR) per occurence
 # plant
 param cap_min{plant};    # minimum production capacity of plant (MW)
 param cap_max{plant};    # maximum production capacity of plant (MW)
-param pdt{plant};        # ???
-param spdt{plant};       # ??? like pdt, but for initial conditions
 
 # time
 param demand{time};      # demand timeseries (MW)
