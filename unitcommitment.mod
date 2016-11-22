@@ -60,23 +60,23 @@ s.t. def_costs_shutdown:
 
 
 # CONSTRAINTS
-                  
+ 
 s.t. res_demand_satisfaction{t in time}:
         demand[t] = sum{p in plant} production[t, p];
 
 
 s.t. def_startup_shutdown{t in time, p in plant}:
-        startup[t, p] - shutdwn[t,p] 
+        startup[t, p] - shutdwn[t, p] 
             = 
         on_off[t, p] - (if t>1 then on_off[t-1,p] else 0);
 
 
 s.t. res_production_minimum{t in time, p in plant}:
-        production[t,p] >= on_off[t, p] * cap_min[p];
+        production[t, p] >= on_off[t, p] * cap_min[p];
 
 
 s.t. res_production_maximum{t in time, p in plant}:
-        production[t,p] <= on_off[t, p] * cap_max[p];
+        production[t, p] <= on_off[t, p] * cap_max[p];
 
 
 # SOLVE
@@ -101,22 +101,24 @@ printf "\n\nSCHEDULE\n\n";
 printf "   t  "; # header line
     printf{p in plant}: " %8.8s", p;
     printf "  %8.8s\n", "Demand";
-    printf "  "; printf{p in plant}: "---------"; printf "--------------\n";
+    printf "  "; printf{p in plant}: "---------"; printf "--------------"
+printf "\n"; # table body
 for{t in time} {
-    printf "  %2s  ", t;
-    printf{p in plant}: " %8g", production[t, p];
-    printf "  %8g ", demand[t];
-    printf{d in 500..demand[t] by 1000} "=";
+    printf "  %2s  ", t; # timestep number
+    printf{p in plant}: " %8g", production[t, p]; # production by plant
+    printf "  %8g ", demand[t]; # final column: demand
+    printf{d in 500..demand[t] by 1000} "="; # demand barchart idea
     printf "\n";
 }
-printf "  "; printf{p in plant}: "---------"; printf "--------------\n";
+printf "  "; printf{p in plant}: "---------"; printf "--------------"
+printf "\n"; # footer line
 printf "  %%   "; # share
     printf{p in plant}: " %8.1f", plant_share[p]; 
     printf "\n";
-printf "  #on "; # share
+printf "  #on "; # number of starts
     printf{p in plant}: " %8.0f", no_of_starts[p]; 
     printf "\n";
-printf "  #off"; # share
+printf "  #off"; # number of stops
     printf{p in plant}: " %8.0f", no_of_stops[p]; 
     printf "\n";        
 printf "\n";
