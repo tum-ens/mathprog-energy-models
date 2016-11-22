@@ -4,7 +4,7 @@ This repository contains a collection of mathematical optimisation models that h
 
 The common theme among these models is **capacity expansion**, **power flow** and **plant scheduling** for **minimum total system cost** (or - in the case of DHMNL - maximum revenue), each model stressing another aspect of common tasks in modelling of energy systems.
 
-## The Models
+## Models
 
 ### DCFLOW
 
@@ -33,6 +33,11 @@ Storage Optimisation for Smart Grid. This model optimises **size and operation**
 ### Startup and partial
 
 This linear programming (LP) optimisation model finds a **minimum-cost capacity expansion and unit commitment** solution to a given demand  timeseries for a combination of a fluctuating feed-in (renewables) and a controllable technology (power plant). This model focuses on correctly depicting the trade-off in sizing the power plant with respect to its operation point, which can exhibit less efficiency than when operating below its nominal size. These properties are approximated by a formulation that combines **startup costs** with a linearily increasing or decreasing **conversion efficiency**, depending on the **operation point**.
+
+### Unit commitment
+
+This mixed-integer linear programming (MILP) model finds a cost-minimal power plant **operation schedule** for a given demand timeseries. Modelled power plant attributes are minimum and maximum output capacity, startup and shutdown costs, operational fixed (when switched on) and variable (by power production) costs. This formulation is computationally more complex than the one used in model *Startup and partial*, but more accurate in that it depicts the discrete nature of the on-off decision. Also, it allows for more extensions similar to state-of-the-art unit commitment models, e.g.: minimum runtimes, minimum cooldown times, hot or warm start capabilities.
+
 
 ## Installation
 
