@@ -49,11 +49,11 @@ For trying out these models, there is an in-browser [WebApp](http://www3.nd.edu/
 
 ### Windows
 
-Binary builds for Windows are available through the [WinGLPK](https://sourceforge.net/projects/winglpk/). Just extract the contents of the ZIP file to a convenient location, e.g. `C:\GLPK`. You then can either call a model using
+Binary builds for Windows are available through the [WinGLPK](https://sourceforge.net/projects/winglpk/). Just extract the contents of the ZIP file to a convenient location, e.g. `C:\GLPK`. You then can either call a model using:
 
     C:\GLPK\bin\glpsol.exe -m model.mod
     
-or add the subdirectory `w64`, which contains the file `glpsol.exe`, to the system path ([how](http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx)), so that the command `glpsol` is available on the command prompt from any directory directly:
+However, it is recommended to add the subdirectory `w64`, which contains the file `glpsol.exe`, to the system path ([how](http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx)), so that the command `glpsol` is available on the command prompt from any directory directly:
 
     glpsol -m model.mod
 
