@@ -61,30 +61,28 @@
 
 
 
-# SETS
+# SETS & PARAMETERS
 
-param N;
-set time within 1..N;
-set startup_time within time := 2..card(time);
+# time
+param N;  # number of time steps
+set time within 1..N;  # time steps
+
+# economics
 set cost_types := {'invest (res)', 'invest (pp)', 'startup', 'fuel'};
 
-
-# PARAMETERS
-
-# economic parameters
-param cost_invest;
-param cost_fuel;
-param cost_startup;
-param cost_res;
+param cost_invest; # (EUR/MW) power-plant investment costs
+param cost_fuel; # (EUR/MWh) power-plant fuel costs
+param cost_startup; # (EUR/MW) power-plant startup costs
+param cost_res; # (EUR/MW) renewable investment costs
 
 # power-plant parameters
-param efficiency_min;
-param efficiency_max;
-param partial_min;
+param efficiency_min; # (1) power-plant efficiency at minimum operation point
+param efficiency_max; # (1) power-plant efficiency at maximum operation point
+param partial_min; # (1) minimum operation point, relative to plant capacity
 
 # timeseries
-param demand{t in time} >= 0;
-param wind{t in time} >= 0;
+param demand{t in time} >= 0; # (MW) electricity demand
+param wind{t in time} >= 0; # (1) normalised wind capacity factor
 
 
 
@@ -98,7 +96,7 @@ var capacity_res >= 0;
 var pp_inp{t in time} >= 0; # (MW) power-plant input power, i.e. fuel consumption
 var pp_out{t in time} >= 0; # (MW) power-plant output power, i.e. elec generation
 var cap_online{t in time} >= 0; # (MW) power-plant online capacity, i.e. activity
-var cap_start{t in startup_time} >= 0; # (MW) power-plant startup capacity
+var cap_start{t in time} >= 0; # (MW) power-plant startup capacity
 var res_out{t in time} >= 0; # (MW) RES fluctuating electricity output
 
 # costs
@@ -121,7 +119,7 @@ s.t. def_costs_invest_res:
 
 # startup cost: total startup capacity multiplied with startup cost parameter
 s.t. def_costs_startup:
-    costs['startup'] = cost_startup * sum{t in startup_time} cap_start[t];
+    costs['startup'] = cost_startup * sum{t in time} cap_start[t];
 
 # fuel costs: total power-plant input multiplied with fuel cost parameter
 s.t. def_costs_fuel:
@@ -152,16 +150,11 @@ s.t. res_pp_out_max_by_capacity_online{t in time}:
 s.t. res_pp_out_min_by_capacity_online{t in time}:
     pp_out[t] >= cap_online[t] * partial_min;
 
-# boundary condition: at the beginning, assume that the power-plant is switched 
-# off
-s.t. def_pp_cap_online_initial:
-    cap_online[1] = 0;
-
 # changes in the online capacity are to cause startup costs. These are triggered 
 # by the startup capacity variable, which must become positive whenever the 
 # online capacity increases (but not when it decreases!)
-s.t. def_pp_startup{t in startup_time}:
-    cap_start[t] >= cap_online[t] - cap_online[t-1];
+s.t. def_pp_startup{t in time}:
+    cap_start[t] >= cap_online[t] - (if t > 1 then cap_online[t-1] else 0);
 
 # the online capacity is limited by the total installed power-plant capacity
 s.t. res_pp_cap_online{t in time}:
@@ -263,24 +256,24 @@ printf "\n\n";
 data;
 
 # economic parameters
-param cost_invest   := 100; # (EUR/MW)
-param cost_startup  := 120; # (EUR/MW)
-param cost_fuel     :=  80; # (EUR/MWh)
-param cost_res      := 150; # (EUR/MW)
+param cost_invest   := 100; # (EUR/MW) power-plant investment costs
+param cost_fuel     :=  80; # (EUR/MWh) power-plant fuel costs
+param cost_startup  := 120; # (EUR/MW) power-plant startup costs
+param cost_res      := 150; # (EUR/MW) renewable investment costs
 
 # power-plant parameters
-param efficiency_max := 0.50; # (%)
-param efficiency_min := 0.40; # (%)
-param partial_min    := 0.25; # (%)
+param efficiency_max := 0.50; # (1) power-plant efficiency at minimum operation point
+param efficiency_min := 0.40; # (1) power-plant efficiency at maximum operation point
+param partial_min    := 0.25; # (1) minimum operation point, relative to plant capacity
 
 # timeseries
-param N := 6; # must be set equal to number of timesteps in following table
+param N := 6; # number of time steps; must match with the table below
 param : time : wind demand := 
-        1      0.0       0  # no demand (due to initial startup constraint)
-        2      0.2       1 
+        1      0.2       2
+        2      0.2       1
         3      0.4       5  # peak demand
-        4      0.2       1 
-        5      0.3       3 
+        4      0.2       1
+        5      0.3       3
         6      0.1       5; # peak demand again
 
 # END
