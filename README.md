@@ -8,19 +8,22 @@ The common theme among these models is **capacity expansion**, **power flow** an
 
 ### DCFLOW
 
-This linear programming model finds the minimum cost generation and network flow for a lossless network, while obeying **linearised DC powerflow** equations.
+This linear programming model finds the minimum cost generation and network flow for a lossless electricity network, while obeying **linearised DC powerflow** equations.
 
 ### DHMNL
 
-This mixed-integer linear programming (MILP) model finds the **maximum revenue topology and size** of a district heating network for a given set of source and demand vertices. The model **can decide which demands to connect** and consequently plans the location and size of the built network.
+This mixed-integer linear programming (MILP) model finds the **maximum revenue topology and size** of a district heating (DH) network for a given set of source and demand vertices. The model **can decide which demands to connect** and consequently plans the location and size of the built network. Different from most other models here, this implies that the system under design does not have to satisfy a demand, but can select only a (possibly empty) subset of profitable customers.
 
 ### Equilibrium
 
-This LP model finds the **maximum welfare** solution for a given set of  a) a discretised production cost curve (i.e. a **merit order** curve) and b) a discretised utility function of customers (i.e. a **price-demand** curve).
+This LP model finds the **maximum welfare** solution for a given set of  
+a) a discretised production cost curve (i.e. a **merit order** supply cost curve) and   
+b) a discretised utility function of customers (i.e. a **price-demand** curve).  
+I thus finds the [economic equilibrium](https://en.wikipedia.org/wiki/Economic_equilibrium) of the market situation encoded by its inputs.
 
 ### Intertemporal
 
-This LP model finds the minimum cost **investment plan** for for a set of two power plant technologies over multiple decades, allowing investment decisions every five years. Old investments phase out of the power plant fleet after the **lifetime** of each investment is over.
+This LP model finds the minimum cost **investment plan** for for a set of two power plant technologies over multiple decades, allowing investment decisions every five years. Old investments phase out of the power plant fleet after the parameterised **lifetime** of each investment is over.
 
 ### N minus 1
 
@@ -28,7 +31,9 @@ This model finds the minimum cost network within a graph to **redundantly connec
 
 ### SOforSG
 
-Storage Optimisation for Smart Grid. This model optimises **size and operation** of a hypothetical lossless **storage technology** for electric energy. A given electricity demand must be satisfied from a) a cost-free (renewable) energy supply with intermittent characteristic or from b) purchase, i.e. buying of electricity from the grid for a time-dependent price. Find more explanation in [a dedicated blog post](http://www.enerpymodelling.de/soforsg/) that walks through the whole model.
+Storage Optimisation for Smart Grid. This model optimises **size and operation** of a hypothetical lossless **storage technology** for electric energy. A given electricity demand must be satisfied from  
+a) a cost-free (renewable) energy supply with intermittent characteristic or from  
+b) purchase, i.e. buying of electricity from the grid for a time-dependent price.  
 
 ### Startup and partial
 
@@ -42,10 +47,6 @@ This mixed-integer linear programming (MILP) model finds a cost-minimal power pl
 ## Installation
 
 The standalone solver `glpsol` from the GNU Linear Programming Toolkit (GLPK).
-
-### WebApp
-
-For trying out these models, there is an in-browser [WebApp](http://www3.nd.edu/~jeff/mathprog/) for MathProg maintained by [Jeffrey Kantor](http://energy.nd.edu/faculty/jeffrey-kantor/).
 
 ### Windows
 
@@ -86,4 +87,4 @@ To check whether (and where) the solver was installed, you can use:
 
 ## Copyright
 
-Each model has its own author and license statement in the file header. Most models so far have the Creative Commons Public Domain Dedication, short [CC0](https://creativecommons.org/publicdomain/zero/1.0). In other words, *you can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.* Some minor conditions still apply, most notably: *When using or citing the work, you should not imply endorsement by the author or the affirmer.* But that's about it. But when in doubt, read the [read the full license text](https://creativecommons.org/publicdomain/zero/1.0/legalcode).
+Each model has its own author and license statement in the file header. Most models so far have the Creative Commons Public Domain Dedication, short [CC0](https://creativecommons.org/publicdomain/zero/1.0). In other words, *you can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.* Some minor conditions still apply, most notably: *When using or citing the work, you should not imply endorsement by the author or the affirmer.* But that's about it. But when in doubt, read the [full license text](https://creativecommons.org/publicdomain/zero/1.0/legalcode).
