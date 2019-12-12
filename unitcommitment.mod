@@ -101,7 +101,7 @@ printf "\n\nSCHEDULE\n\n";
 printf "   t  "; # header line
     printf{p in plant}: " %8.8s", p;
     printf "  %8.8s\n", "Demand";
-    printf "  "; printf{p in plant}: "---------"; printf "--------------"
+    printf "  "; printf{p in plant}: "---------"; printf "--------------";
 printf "\n"; # table body
 for{t in time} {
     printf "  %2s  ", t; # timestep number
@@ -110,7 +110,7 @@ for{t in time} {
     printf{d in 500..demand[t] by 1000} "="; # demand barchart idea
     printf "\n";
 }
-printf "  "; printf{p in plant}: "---------"; printf "--------------"
+printf "  "; printf{p in plant}: "---------"; printf "--------------";
 printf "\n"; # footer line
 printf "  %%   "; # share
     printf{p in plant}: " %8.1f", plant_share[p]; 
