@@ -1,0 +1,16 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install GLPK
+      run: sudo apt install glpk-util
+    - name: Run basic tests
+      run: ./test.sh
+
