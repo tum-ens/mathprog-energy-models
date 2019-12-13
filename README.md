@@ -8,7 +8,7 @@ The common theme among these models is **capacity expansion**, **power flow** an
 
 ### DCFLOW
 
-This linear programming model finds the minimum cost generation and network flow for a lossless electricity network, while obeying **linearised DC powerflow** equations.
+This linear programming (LP) model finds the minimum cost generation and network flow for a lossless electricity network, while obeying **linearised DC powerflow** equations (consult a textbook, or [The DC Power Flow Equations](http://home.eng.iastate.edu/~jdm/ee553/DCPowerFlowEquations.pdf) for a quick primer). It is present in two semantically identical, but mathematically different formulations: `dcflow_arc` uses directed arcs (two per edge) and contains only positive flow variables, the direction directly corresponding to that of its containing arc. `dcflow_edge` only contains one edge between each pair of connected vertices, and an unconstrained flow variable instead, encoding direction in its sign. While the edge formulation uses less variables and thus is more efficient for only this problem, the arc formulation can make it easier to add further variables and constraints that interact with the modelled power flow.
 
 ### DHMNL
 
@@ -16,24 +16,19 @@ This mixed-integer linear programming (MILP) model finds the **maximum revenue t
 
 ### Equilibrium
 
-This LP model finds the **maximum welfare** solution for a given set of  
-a) a discretised production cost curve (i.e. a **merit order** supply cost curve) and   
-b) a discretised utility function of customers (i.e. a **price-demand** curve).  
-I thus finds the [economic equilibrium](https://en.wikipedia.org/wiki/Economic_equilibrium) of the market situation encoded by its inputs.
+This linear programming (LP) model finds the **maximum welfare** solution for a given set of *a) a discretised production cost curve* (i.e. a **merit order** curve) and *b) a discretised utility function* of customers (i.e. a **price-demand** curve). It thus finds the [economic equilibrium](https://en.wikipedia.org/wiki/Economic_equilibrium) of the market situation encoded by its inputs.
 
 ### Intertemporal
 
-This LP model finds the minimum cost **investment plan** for for a set of two power plant technologies over multiple decades, allowing investment decisions every five years. Old investments phase out of the power plant fleet after the parameterised **lifetime** of each investment is over.
+This linear programming (LP) model finds the minimum cost **investment plan** for for a set of two power plant technologies over multiple decades, allowing investment decisions every five years. Old investments phase out of the power plant fleet after the parameterised **lifetime** of each investment is over.
 
 ### N minus 1
 
-This model finds the minimum cost network within a graph to **redundantly connect a set of source to a set of demand points**. "Redundantly" means that the resulting network is resilient against the failure of any single edge in the network, i.e. satisfying the [N-1 Criterion](https://emr.entsoe.eu/glossary/bin/view/ENTSO-E+Common+Glossary/N-1+Criterion) common in electric grid design.
+This mixed-integer linear programming (MILP) model finds the minimum cost network within a graph to **redundantly connect a set of source to a set of demand points**. "Redundantly" means that the resulting network is resilient against the failure of any single edge in the network, i.e. satisfying the [N-1 Criterion](https://www.entsoe.eu/fileadmin/user_upload/_library/publications/entsoe/Operation_Handbook/glossary_v22.pdf#page=9) common in electric grid design.
 
 ### SOforSG
 
-Storage Optimisation for Smart Grid. This model optimises **size and operation** of a hypothetical lossless **storage technology** for electric energy. A given electricity demand must be satisfied from  
-a) a cost-free (renewable) energy supply with intermittent characteristic or from  
-b) purchase, i.e. buying of electricity from the grid for a time-dependent price.  
+This linear programming (LP) model is an abbreviation of *Storage Optimisation for Smart Grid*. This model determines optimal **size and operation** of a hypothetical lossless **storage technology** for electric energy. A given electricity demand must be satisfied from *either* a cost-free (renewable) energy supply with intermittent characteristic *or* from purchase of electricity from the grid for a time-dependent price. Surplus renewable energy can be sold either at generation time, or stored to yield a higher revenue later. This model is the core idea behind [urbs](https://github.com/tum-ens/urbs), which generalises the size and operation optimisation to an arbitrary number of energy conversion, transmission and storage processes (at aan rbitrary number of conceptual nodes, called *sites*). The central idea, the energy balance constraint, storage state equation and a cost minimisation objective function, are all present here.
 
 ### Startup and partial
 
@@ -46,7 +41,11 @@ This mixed-integer linear programming (MILP) model finds a cost-minimal power pl
 
 ## Installation
 
-The standalone solver `glpsol` from the GNU Linear Programming Toolkit (GLPK).
+All models require the standalone solver `glpsol` from the GNU Linear Programming Toolkit (GLPK).
+
+### Web
+
+For short experiments, there is [GLPK Online](https://cocoto.github.io/glpk-online/), a Javascript port of GLPK and MathProg. Just copy & paste the model code into the text box, press *Solve*, inspect model ouptut in tab *Output*.
 
 ### Windows
 
