@@ -1,7 +1,7 @@
 image: ubuntu:latest
 
 before_script:
-  - apt-get update && apt-get install -y glpk-utils
+  - apt-get update -qq && apt-get install -y -qq glpk-utils
 
 test:
   script:
