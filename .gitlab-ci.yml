@@ -1,10 +1,8 @@
 image: ubuntu:latest
 
-stages:
-  - test
-  
+before_script:
+  - apt-get install glpk-utils
+
 test:
-  stage: test
   script:
-    - sudo apt-get install glpk-utils
     - chmod +x ./test.sh && ./test.sh
