@@ -83,6 +83,13 @@ To check whether (and where) the solver was installed, you can use:
     $ which glpsol
     /usr/bin/glpsol
 
+## Run tests
+
+To check whether all models work as intended, run included script `test.sh`:
+
+    $ ./test.sh
+
+If it returns without output (and returns no error code), all models are syntactically fine. If there is a compilation error, it will be printed and the script returns an error code.
 
 ## Copyright
 
